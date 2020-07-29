@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="expires" content="0"/>
+    <meta http-equiv="Window-target" content="_top"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta name="description" content="">
+    <meta name="author" content="Ray">
+    <link rel="shortcut icon" href="favicon.ico" type="images/x-icon"/>
+    <title>测试接口</title>
+    <link rel="stylesheet" href="assets/ResetCSS/reset.css"/>
+    <link rel="stylesheet" href="assets/bootstrap-4.5.0-dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="ore-theme-light">
+    <div class="ore-page">
+        <section>
+            <div class="container container-lg bg-light py-5">
+                <form name="ajaxForm" autocomplete="off">
+                    <div class="form-group row">
+                        <label class="col-sm-2 required">请求路径</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" name="url" placeholder='例如： api/getNews'  required/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2">请求数据</label>
+                        <div class="col-sm-10">
+                            <div class="form-inline form-group">
+                                <label class="custom-control custom-radio text-left">
+                                    <input type="radio" name="dataPosition" class="custom-control-input" value="header" checked/>
+                                    <span class="custom-control-label">Header</span>
+                                </label>&nbsp;&nbsp;
+                                <label class="custom-control custom-radio text-left">
+                                    <input type="radio" name="dataPosition" class="custom-control-input" value="header" checked/>
+                                    <span class="custom-control-label">Body</span>
+                                </label>&nbsp;&nbsp;
+                                <span class="btn btn-outline-primary btn-sm" data-role="addInput">+添加</span>
+                            </div>
+                            <ul id="List_param">
+
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2">请求数据类型</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="contentType">
+                                <option value="application/x-www-form-urlencoded">application/x-www-form-urlencoded</option>
+                                <option value="multipart/form-data">multipart/form-data</option>
+                                <option value="application/json">application/json</option>
+                                <option value="text/html">text/html</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2">请求类型</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="type">
+                                <option value="POST">POST</option>
+                                <option value="GET">GET</option>
+                                <option value="PUT">PUT</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2">Ajax类库</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="ajax">
+                                <option value="$.ajax">jQueryAjax</option>
+                                <option value="axios">Axios</option>
+                                <option value="XMLHttpRequest">原生XMLHttpRequest</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+                <div class="form-group text-right">
+                    <span class="btn btn-primary" data-role="submit">提交</span>
+                    <span class="btn btn-danger" data-role="reset" onclick="ajaxForm.reset()">重置</span>
+                </div>
+                <form>
+                    <div class="form-group row">
+                        <label class="col-sm-2">请求参数</label>
+                        <div class="col-sm-10">
+                        <pre id="Pre_request" class="bg-dark text-white p-2">
+                        </pre>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2">返回结果</label>
+                        <div class="col-sm-10">
+                        <pre id="Pre_response" class="bg-dark text-white p-2">
+                        </pre>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+    <script type="text/html" id="TPL_PARAMINPUT">
+        <li>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label class="text-left form-inline">
+                        参数：
+                        <input class="form-control form-control-sm" name="key" placeholder=''/>
+                    </label>
+                </div>
+                <div class="col-4">
+                    <label class="text-left form-inline">
+                        值：
+                        <input class="form-control form-control-sm" name="value" placeholder=''/>
+                    </label>
+                </div>
+                <div class="col-2">
+                    <span class="btn btn-outline-primary btn-sm" data-role="addInput">+添加</span>
+                    <span class="btn btn-outline-danger btn-sm" data-role="delInput">-删除</span>
+                </div>
+            </div>
+        </li>
+    </script>
+    <script src="assets/Frameworks/jquery-3.4.1.min.js"></script>
+    <!--<script src="assets/Frameworks/axois.min.js"></script>-->
+    <script src="assets/bootstrap-4.5.0-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/layer/layer.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

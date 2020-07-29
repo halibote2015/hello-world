@@ -1,0 +1,37 @@
+html, body{
+    height: 100%;
+}
+body{
+    background-image: url("../images/background/bg-01.jpeg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+section{
+    position: relative;
+    height: 300px;
+    margin-bottom: 20px;
+    padding: 20px 0;
+}
+section:after{
+    content: " ";
+    background-color: #000;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+form label{text-align: right}
+
+.ore-page{
+    padding: 20px 0;
+    height: 100%;
+    overflow: auto;
+}
+.ore-left{
+    width: 200px
+}

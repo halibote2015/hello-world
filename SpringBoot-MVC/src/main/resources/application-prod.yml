@@ -1,0 +1,53 @@
+server:
+  port: 3603
+  servlet:
+    session:
+      timeout: 30m
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 50
+# mysql
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://172.16.8.182:11306/CRT?useUnicode=true&characterEncoding=utf-8&useSSL=true&autoReconnect=true
+    username: root
+    password: knilVrvim0228%)
+  flyway:
+    # flyway 的 clean 命令会删除指定 schema 下的所有 table, 杀伤力太大了, 应该禁掉.
+    cleanDisabled: true
+    # 启用或禁用 flyway
+    enabled: true
+    # 设定 SQL 脚本的目录,多个路径使用逗号分隔, 比如取值为 classpath:db/migration,filesystem:/sql-migrations
+    locations: classpath:db/migration
+    # 如果指定 schema 包含了其他表,但没有 flyway_schema_history 表的话, 在执行 flyway migrate 命令之前, 必须先执行 flyway baseline 命令.
+    # 设置 spring.flyway.baselineOnMigrate 为 true 后, flyway 将在需要 baseline 的时候, 自动执行一次 baseline.
+    baselineOnMigrate: true
+    # 指定 baseline 的版本号,缺省值为 1, 低于该版本号的 SQL 文件, migrate 的时候被忽略.
+    baselineVersion: 1
+    # Encoding of SQL migrations (default: UTF-8)
+    #encoding: UTF-8
+    # 设定 flyway 的 metadata 表名, 缺省为 flyway_schema_history
+    table: flyway_schema_history
+    # 开发环境最好开启 outOfOrder, 生产环境关闭 outOfOrder .
+    outOfOrder: true
+    # 需要 flyway 管控的 schema list, 缺省的话, 使用的时 dbsource.connection直连上的那个 schema, 可以指定多个schema, 但仅会在第一个schema下建立 metadata 表, 也仅在第一个schema应用migration sql 脚本. 但flyway Clean 命令会依次在这些schema下都执行一遍.
+    #schemas:
+logging:
+  path: /data/logs/AIO-Server
+  file: AIO-Server.log
+  level:
+    # 全局
+    root: INFO
+    # 指定包名
+    com:
+      vrv:
+        im: INFO
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger- %msg%n'
+    file: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger- %msg%n'
+mybatis:
+  typeAliasesPackage: com.vrv.im.mapper
+  mapperLocations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
